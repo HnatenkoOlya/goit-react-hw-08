@@ -1,0 +1,11 @@
+.listContact {
+  margin-top: 15px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.itemContact {
+    list-style: none;
+    width: 400px;
+}

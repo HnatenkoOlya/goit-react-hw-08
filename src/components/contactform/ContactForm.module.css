@@ -1,0 +1,26 @@
+.form {
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  max-width: 400px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.formField {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.formBtn {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.formError {
+    color:rgb(247, 70, 30)
+}

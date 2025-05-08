@@ -1,0 +1,23 @@
+.btnContact {
+    background-color: bisque;
+    border: 2px solid black;
+}
+
+.iconContact {
+    margin-right: 10px;
+}
+.divContact {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
