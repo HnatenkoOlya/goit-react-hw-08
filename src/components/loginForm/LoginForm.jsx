@@ -13,25 +13,19 @@ export default function LoginForm () {
      
       const dispatch = useDispatch();
 
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = e.currentTarget;
-    
-        dispatch(
-          logIn({
-            email: form.elements.email.value,
-            password: form.elements.password.value,
+      const handleSubmit = (values, { resetForm }) => {
+        console.log(values)
+        dispatch(logIn(values))
+          .unwrap()
+          .then(() => {
+            console.log('login success');
+            resetForm();
           })
-        )
-        .unwrap()
-      .then(() => {
-        console.log('login success');
-      })
-      .catch(() => {
-        console.log('login error');
-      });
-        form.reset();
+          .catch(() => {
+            console.log('login error');
+          });
       };
+
     return (
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>

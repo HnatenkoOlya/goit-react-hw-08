@@ -15,20 +15,18 @@ export default function RegistrationForm () {
      
       const dispatch = useDispatch();
 
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = e.target;
-    
+      const handleSubmit = (values, { resetForm }) => {
         dispatch(
           register({
-            name: form.elements.name.value,
-            email: form.elements.email.value,
-            password: form.elements.password.value,
+            name: values.username,
+            email: values.email,
+            password: values.password,
           })
         );
     
-        form.reset();
+        resetForm();
       };
+      
     return (
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>

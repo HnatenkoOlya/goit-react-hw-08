@@ -1,12 +1,14 @@
-import ContactForm from './contactform/ContactForm.jsx';
-import ContactList from './contactlist/ContactList.jsx';
-import SearchBox from './searchbox/SearchBox.jsx';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch,  useSelector } from "react-redux";
 import { useEffect } from "react";
-import {fetchContacts} from '../redux/contacts/operation.js';
-import { selectLoading, selectError} from '../redux/contacts/operation.js';
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
+
+//import { selectLoading, selectError} from '../redux/contacts/operation.js';
+import {fetchContacts} from '../redux/contacts/operation.js';
+import { PrivateRoute } from '../components/PrivateRoute.jsx';
+import { RestrictedRoute } from './RestrictedRoute.jsx';
+
+import Layout from './Layout.jsx'
 import './App.css';
 
 const HomePage = lazy(() => import ("../pages/homePage/HomePage.jsx"));
@@ -17,31 +19,33 @@ const NotFoundPage = lazy(() => import ("../pages/NotFoundPage.jsx"));
 
 export default function App () {
   const dispatch = useDispatch();
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
+ // const loading = useSelector(selectLoading);
+ // const error = useSelector(selectError);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    if(isLoggedIn){
+      dispatch(fetchContacts())
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <div>
-      <h1>Phonebook</h1>
-      {loading && <p>Loading contacts...</p>}
-      {error && <p>{error}</p>}
-      <ContactForm/>
-      <SearchBox/>
-      <ContactList/>
       <Suspense fallback={<div>Loading...</div>}> 
       <Routes>
-        <Route path="/" element={<HomePage/>}></Route>
-        <Route path="/register" element={<RegistrationPage/>}></Route>
-        <Route path="/login" element={<LoginPage/>}></Route>
-        <Route path="/contacts" element={<ContactsPage/>}></Route>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage/>}></Route>
+        <Route path="/register" element={<RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegistrationPage />}/>}></Route>
+        <Route path="/login" element={<RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}/>}></Route>
+        <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />}></Route>
         <Route path="*" element={<NotFoundPage/>}></Route>
+        </Route>
       </Routes>
       </Suspense>
    </div>
-
-  )
+  );
 }
