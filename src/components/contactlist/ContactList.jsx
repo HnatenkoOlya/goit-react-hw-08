@@ -11,12 +11,17 @@ export default function ContactList () {
       console.log('visibleContacts', visibleContacts);*/
 
  return (
-    <ul className={css.listContact}>
+    <>
+    {visibleContacts.length === 0 ? (<p className={css.notFound}>No contacts found</p>)
+    : (
+         <ul className={css.listContact}>
         {visibleContacts.map(contact => (
             <li className={css.itemContact} key={contact.id}>
                 <Contact contact={contact}/>
             </li>
         ))}
     </ul>
+    )}
+    </>
  );
 }

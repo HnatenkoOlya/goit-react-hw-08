@@ -10,6 +10,7 @@ import { RestrictedRoute } from './RestrictedRoute.jsx';
 
 import Layout from './Layout.jsx'
 import './App.css';
+import { Toaster } from 'react-hot-toast';
 
 const HomePage = lazy(() => import ("../pages/homePage/HomePage.jsx"));
 const ContactsPage = lazy (() => import ("../pages/contactsPage/ContactsPage.jsx"));
@@ -46,6 +47,7 @@ export default function App () {
         </Route>
       </Routes>
       </Suspense>
+      <Toaster position="top-center" reverseOrder={false} />
    </div>
   );
 }

@@ -2,6 +2,7 @@ import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useId } from "react";
 import { register } from '../../redux/auth/operations';
+import css from './RegistrationForm.module.css'
 
 export default function RegistrationForm () {
     const initialValues = {
@@ -29,14 +30,14 @@ export default function RegistrationForm () {
       
     return (
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form>
-        <label htmlFor={nameFieldId}>Username</label>
-        <Field type="text" name="username" />
-        <label htmlFor={emailFieldId}>Email</label>
-        <Field type="email" name="email" />
-        <label htmlFor={passwordFieldId}>Password</label>
-        <Field type="password" name="password" />
-        <button type="submit">Register</button>
+        <Form className={css.formR}>
+        <label htmlFor={nameFieldId} className={css.labelR}>Username</label>
+        <Field type="text" name="username" className={css.fieldR}/>
+        <label htmlFor={emailFieldId} className={css.labelR}>Email</label>
+        <Field type="email" name="email" className={css.fieldR} />
+        <label htmlFor={passwordFieldId} className={css.labelR}>Password</label>
+        <Field type="password" name="password" className={css.fieldR} />
+        <button type="submit" className={css.buttonR}>Register</button>
         </Form>
       </Formik>
     );

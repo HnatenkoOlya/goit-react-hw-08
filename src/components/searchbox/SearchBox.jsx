@@ -10,7 +10,7 @@ export default function SearchBox () {
     } 
     return (
         <div>
-            <p className={css.textSearch}>Find contacts by name</p>
+            <p className={css.textSearch}>Find contacts by name or number</p>
             <input className={css.inputSearch} type="text" value={filter}   onChange={handleFilterChange}/>
         </div>
     )

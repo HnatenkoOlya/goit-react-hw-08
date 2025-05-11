@@ -1,6 +1,16 @@
 .btnContact {
-    background-color: bisque;
-    border: 2px solid black;
+  margin-top: 12px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.btnContact:hover {
+  background-color: #0056b3;
 }
 
 .iconContact {

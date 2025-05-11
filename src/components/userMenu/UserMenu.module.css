@@ -1,0 +1,13 @@
+.buttonU {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.buttonU:hover {
+  background-color: #0056b3;
+}
