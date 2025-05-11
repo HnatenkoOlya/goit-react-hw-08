@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 //import { selectLoading, selectError} from '../redux/contacts/operation.js';
-import {fetchContacts} from '../redux/contacts/operation.js';
+import {fetchContacts} from '../redux/contacts/operations.js';
 import { PrivateRoute } from '../components/PrivateRoute.jsx';
 import { RestrictedRoute } from './RestrictedRoute.jsx';
 
