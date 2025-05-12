@@ -2,7 +2,7 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import toast from 'react-hot-toast';
 
-axios.defaults.baseURL = "https://681386c2129f6313e2118f2d.mockapi.io";
+//axios.defaults.baseURL = "https://681386c2129f6313e2118f2d.mockapi.io";
 
 export const fetchContacts =  createAsyncThunk ("contacts/fetchAll", async (_, thunkAPI) => {
     try {

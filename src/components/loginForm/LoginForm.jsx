@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useId } from "react";
-import { logIn } from '../../redux/auth/operations';
+import { login } from '../../redux/auth/operations';
 import css from './LoginForm.module.css'
 
 export default function LoginForm () {
@@ -16,7 +16,7 @@ export default function LoginForm () {
 
       const handleSubmit = (values, { resetForm }) => {
         console.log(values)
-        dispatch(logIn(values))
+        dispatch(login(values))
           .unwrap()
           .then(() => {
             console.log('login success');
