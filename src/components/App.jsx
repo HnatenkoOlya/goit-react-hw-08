@@ -23,13 +23,17 @@ export default function App () {
   const dispatch = useDispatch();
  // const loading = useSelector(selectLoading);
  // const error = useSelector(selectError);
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  //const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
-  useEffect(() => {
-    if(isLoggedIn){
-      dispatch(refreshUser())
-    }
-  }, [dispatch, isLoggedIn]);
+const isRefreshing = useSelector(state => state.auth.isRefreshing);
+
+   useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  if (isRefreshing) {
+    return <div>Refreshing user...</div>; // або спінер, або інший компонент
+  }
 
   return (
     <div>
